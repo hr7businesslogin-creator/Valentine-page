@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<!-- Romantic Font -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(to bottom,#fff0f5,#ffe6f2);
+  font-family:'Georgia',serif;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+.center-wrapper{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.screen{
+  width:100%;
+  max-width:420px;
+}
+
+/* Proposal Screen */
+#proposal h1{
+  font-size:28px;
+  color:#222;
+  margin-bottom:20px;
+}
+
+.heart-icon{
+  font-size:50px;
+  color:#ff2e93;
+  margin-bottom:15px;
+}
+
+#teaseText{
+  height:30px;
+  margin-bottom:15px;
+  font-size:18px;
+  color:#ff2e93;
+  font-weight:bold;
+  transition:0.3s ease;
+}
+
+.button-container{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+
+button{
+  border:none;
+  padding:12px 28px;
+  border-radius:30px;
+  font-size:18px;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+#yesBtn{
+  background:linear-gradient(45deg,#ff2e93,#ff6ec4);
+  color:white;
+}
+
+#noBtn{
+  background:#bdbdbd;
+  color:white;
+}
+
+/* Celebration Screen */
+#celebration{
+  display:none;
+  padding:40px 20px;
+  animation:fadeIn 0.6s ease forwards;
+}
+
+#celebration h1{
+  font-size:34px;
+  color:#ff2e93;
+  margin-bottom:10px;
+}
+
+#celebration h2{
+  font-size:22px;
+  margin-bottom:25px;
+  color:#333;
+}
+
+.urdu{
+  font-size:20px;
+  line-height:2;
+  color:#444;
+  margin-bottom:25px;
+  word-wrap:break-word;
+}
+
+.love-line{
+  margin-top:30px;
+  font-family:'Dancing Script',cursive;
+  font-size:32px;
+  color:#ff2e93;
+  text-shadow:0 0 8px rgba(255,46,147,0.4);
+  animation:glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+  from{opacity:0.7;}
+  to{opacity:1;}
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* Floating hearts */
+.floating{
+  position:fixed;
+  animation:floatUp 6s linear infinite;
+  opacity:0.7;
+  pointer-events:none;
+}
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(100vh) rotate(0deg);
+    opacity:0.7;
+  }
+  100%{
+    transform:translateY(-10vh) rotate(360deg);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Proposal Screen -->
+<div class="center-wrapper" id="proposalWrapper">
+  <div class="screen" id="proposal">
+
+    <div class="heart-icon">❤️</div>
+
+    <h1>Will You Be My Valentine? ❤️</h1>
+
+    <div id="teaseText"></div>
+
+    <div class="button-container">
+      <button id="yesBtn">Yes ❤️</button>
+      <button id="noBtn">No 😢</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Celebration Screen -->
+<div class="screen" id="celebration">
+
+  <div class="heart-icon">💖</div>
+
+  <h1>Happy Valentine’s Day ❤️</h1>
+  <h2>SARKAAR 😘</h2>
+
+  <div class="urdu">
+    تم میری زندگی کی سب سے خوبصورت حقیقت ہو 🌹💖 <br>
+    تمہارے بغیر ہر لمحہ ادھورا ہے 😍✨ <br>
+    تمہاری مسکان میرے دل کی روشنی ہے 💫💘 <br>
+    اور تمہارا ساتھ میری زندگی کا سب سے قیمتی خزانہ ہے 💐💕
+  </div>
+
+  <div class="urdu">
+    تم میری دنیا کی خوشبو ہو 🌸💖 <br>
+    میری راتوں کی چمک ہو ✨🌙 <br>
+    تمہارے بغیر یہ زندگی کچھ بھی نہیں 😍💞
+  </div>
+
+  <div class="urdu">
+    “تیری آنکھوں کی چمک میری دنیا کی روشنی 🌟 <br>
+    تیرا ساتھ میری زندگی کی خوشی 💖 <br>
+    دل سے دل تک یہ پیار کا سفر کبھی ختم نہ ہو 💐✨”
+  </div>
+
+  <div class="love-line">
+    I love you so much meri Afghan Jalebi 😘
+  </div>
+
+</div>
+
+<script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const teaseText = document.getElementById("teaseText");
+const proposalWrapper = document.getElementById("proposalWrapper");
+const celebration = document.getElementById("celebration");
+
+let yesScale = 1;
+let maxScale = 1.9;
+let teaseIndex = 0;
+
+const teasingTexts = [
+  "Soch lo 😏",
+  "Maar khaogi! 😜",
+  "Chashmish Chipkli 🐸",
+  "Are you sure? 😌",
+  "Think again 😶",
+  "Last chance 💔",
+  "Don't break my heart 🥺",
+  "Pleaseeee 😜"
+];
+
+noBtn.addEventListener("click", () => {
+
+  teaseText.innerText = teasingTexts[teaseIndex];
+  teaseIndex = (teaseIndex + 1) % teasingTexts.length;
+
+  if (yesScale < maxScale) {
+    yesScale += 0.15;
+    if (yesScale > maxScale) yesScale = maxScale;
+    yesBtn.style.transform = `scale(${yesScale})`;
+  }
+});
+
+yesBtn.addEventListener("click", () => {
+  proposalWrapper.style.display = "none";
+  celebration.style.display = "block";
+  window.scrollTo(0,0);
+});
+
+/* Floating hearts */
+function createHeart(){
+  const heart = document.createElement("div");
+  heart.classList.add("floating");
+
+  const hearts = ["💗","💖","💕","🌸","🌹"];
+  heart.innerText = hearts[Math.floor(Math.random()*hearts.length)];
+
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = (16 + Math.random()*20) + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{ heart.remove(); },6000);
+}
+
+setInterval(createHeart,600);
+</script>
+
+</body>
+</html>
